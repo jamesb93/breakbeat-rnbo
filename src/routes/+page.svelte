@@ -13,13 +13,18 @@
         context = new (window.AudioContext || window.webkitAudioContext)();
         let output = context.createGain().connect(context.destination);
         createDeviceInstance('/code/patch.export.json', context, output)
-		.then((d) => {
+		.then(async d => {
 			device = d
 			device.messageEvent.subscribe((e) => {
 				if (e.tag === 'step') {
 					step = e.payload
 				}
 			}) 
+
+			fetch('/sounds/amen.mp3')
+				.then(response => response.arrayBuffer())
+				.then(buffer => context.decodeAudioData(buffer))
+				.then(audioBuf => device.setDataBuffer('src', audioBuf))
 		})
 		loaded = true
     };
