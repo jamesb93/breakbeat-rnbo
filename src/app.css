@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+html, input, button {
+	font-family: 'VT323', monospace;
+}
+
+body {
+	background-color: rgb(4, 4, 4);
+}
+
+/* style a flat buttons */
+button {
+	background-color: rgb(4, 4, 4);
+	border: 1px solid rgb(255, 255, 255);
+	border-radius: 4px;
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	font-size: 16px;
+	padding: 8px 16px;
+	text-decoration: none;
+}
