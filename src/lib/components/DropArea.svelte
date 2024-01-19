@@ -55,23 +55,41 @@
 </script>
 
 <div id='drop-area' on:dragover={handleDragOver} on:dragleave={handleDragLeave} on:drop={handleDrop} class:highlight={hoveringDragArea}>
-	<p>drag a breakbeat here</p>
-	<input bind:this={fileInput} type="file" id="file-input" accept="audio/x-wav" on:change={handleFileSelection}>
+	<label for="file-input" class="btn">Drag a breakbeat in WAV format here...</label>
+	<!-- <input bind:this={fileInput} type="file" id="file-input" accept="audio/x-wav" on:change={handleFileSelection}> -->
 </div>
 
 <style>
     #drop-area {
+		font-family: 'VT323', monospace;
+		font-size: 2rem;
 		width: 300px;
 		height: 200px;
-		border: 1px dashed #ccc;
+		border: 1px dashed rgb(49, 109, 243);
 		border-radius: 0;
 		text-align: center;
 		margin: 50px auto;
-		cursor: pointer;
+		/* cursor: pointer; */
+		display: grid;
+		place-items: center;
+		color: rgb(49, 109, 243);
+		padding: 1em;
     }
+
+	#drop-area:hover {
+		border: 1px dashed rgb(191, 87, 208)
+	}
 
     .highlight {
 		border-color: #2185d0;
 		color: #2185d0;
     }
+
+	#file-input {
+		visibility: hidden;
+	}
+
+	label:hover {
+		/* cursor: pointer; */
+	}
 </style>

@@ -16,8 +16,17 @@
 		.then(async d => {
 			device = d
 			device.messageEvent.subscribe((e) => {
-				if (e.tag === 'step') {
-					step = e.payload
+				const { tag, payload } = e
+				const callbacks = {
+					step: (payload) => {
+						step = payload
+					},
+					bounds: (payload) => {
+						console.log(payload)
+					}
+				}
+				if (callbacks[tag]) {
+					callbacks[tag](payload)
 				}
 			}) 
 
